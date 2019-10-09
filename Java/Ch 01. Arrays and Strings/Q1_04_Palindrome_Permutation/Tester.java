@@ -13,11 +13,12 @@ public class Tester {
 			boolean a = QuestionA.isPermutationOfPalindrome(s);
 			boolean b = QuestionB.isPermutationOfPalindrome(s);
 			boolean c = QuestionC.isPermutationOfPalindrome(s);
+			boolean d = Hector.isPermutationOfPalindrome(s);
 			System.out.println(s);
-			if (a == b && b == c) {
+			if (a == b && b == c && c == d) {
 				System.out.println("Agree: " + a);
 			} else {
-				System.out.println("Disagree: " + a + ", " + b + ", " + c);
+				System.out.println("Disagree: " + a + ", " + b + ", " + c + ", " + d);
 			}
 			System.out.println();
 		}
