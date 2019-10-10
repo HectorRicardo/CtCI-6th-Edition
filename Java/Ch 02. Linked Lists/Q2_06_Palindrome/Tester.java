@@ -30,10 +30,12 @@ public class Tester {
 				boolean resultA = QuestionA.isPalindrome(head);
 				boolean resultB = QuestionB.isPalindrome(head);
 				boolean resultC = QuestionC.isPalindrome(head);
+				boolean resultD = HectorRecursive.isPalindrome(head);
 				System.out.println("A: " + resultA);
 				System.out.println("B: " + resultB);
 				System.out.println("C: " + resultC);
-				if (resultA != resultB || resultB != resultC) {
+				System.out.println("D: " + resultD);
+				if (resultA != resultB || resultB != resultC || resultC != resultD) {
 					System.out.println("ERROR");
 					length = max;
 					break;
