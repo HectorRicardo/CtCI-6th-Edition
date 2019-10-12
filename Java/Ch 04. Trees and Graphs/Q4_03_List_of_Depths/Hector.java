@@ -3,7 +3,6 @@ package Q4_03_List_of_Depths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
 import CtCILibrary.AssortedMethods;
 import CtCILibrary.TreeNode;
