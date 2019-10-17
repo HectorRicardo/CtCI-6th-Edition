@@ -50,15 +50,16 @@ public class Question {
 	}	
 	
 	public static void main(String[] args) {
-		String bs = printBinary(.125);
+		String bs = Hector.printBinary(.125);
 		System.out.println(bs);
 		
 		for (int i = 0; i < 1000; i++) {
 			double num = i / 1000.0;
 			String binary = printBinary(num);
 			String binary2 = printBinary2(num);
-			if (!binary.equals("ERROR") || !binary2.equals("ERROR")) {
-				System.out.println(num + " : " + binary + " " + binary2);
+			String binary3 = Hector.printBinary(num);
+			if (!binary.equals("ERROR") || !binary2.equals("ERROR") || !binary3.equals("ERROR")) {
+				System.out.println(num + " : " + binary + " " + binary2 + " " + binary3);
 			}
 		}
 	}
