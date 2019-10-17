@@ -16,10 +16,11 @@ public class Tester {
 			for (int targetSum = Math.min(-1, min * size - 10); targetSum <= Math.max(100, max * size + 10); targetSum++) {
 				int answerA = QuestionA.countPathsWithSum(root, targetSum);
 				int answerB = QuestionB.countPathsWithSum(root, targetSum);
-				if (answerA > 0 || answerB > 0) {
-					System.out.println(targetSum + ": " + answerA + ", " + answerB + " | " + (answerA == answerB));
+				int answerC = Hector.countPathsWithSum(root, targetSum);
+				if (answerA > 0 || answerB > 0 || answerC > 0) {
+					System.out.println(targetSum + ": " + answerA + ", " + answerB + ", " + answerC + " | " + (answerA == answerB && answerB == answerC));
 				}
-				if (answerA != answerB) {
+				if (answerA != answerB || answerB != answerC) {
 					isWorking = false;
 					break;
 				}
