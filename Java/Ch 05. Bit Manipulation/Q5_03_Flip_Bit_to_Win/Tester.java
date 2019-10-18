@@ -9,8 +9,9 @@ public class Tester {
 			int seqB = QuestionB.longestSequence(value);
 			int seqC = QuestionC.longestSequence(value);
 			int seqD = QuestionC.longestSequence(value);
+			int seqE = Hector.longestSequence(value);
 			
-			if (seqA != seqB || seqB != seqC || seqC != seqD) {
+			if (seqA != seqB || seqB != seqC || seqC != seqD || seqD != seqE) {
 				System.out.println("FAILURE on value " + value);
 				String xs = Integer.toBinaryString(value);
 				System.out.println(xs);
@@ -18,6 +19,7 @@ public class Tester {
 				System.out.println("B: " + seqB);
 				System.out.println("C: " + seqC);
 				System.out.println("D: " + seqD);
+				System.out.println("E: " + seqE);
 				return false;
 			} 
 		}
