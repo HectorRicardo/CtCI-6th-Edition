@@ -7,8 +7,9 @@ public class Tester {
 			int[] denoms = {25, 10, 5, 1};
 			int waysA = Question.makeChange(i, denoms);
 			int waysB = QuestionB.makeChange(i, denoms);
-			if (waysA != waysB) {
-				System.out.println("Error: " + i + " : " + waysA + ", " + waysB);
+			int waysC = Hector.makeChange(i, denoms);
+			if (waysA != waysB || waysB != waysC) {
+				System.out.println("Error: " + i + " : " + waysA + ", " + waysB + ", " + waysC);
 			}
 		}
 
