@@ -84,11 +84,67 @@ public class Hector {
 		return value ? 1 : 0;
 	}
 	
-	private static boolean charToBoolean(int operandChar) {
+	private static boolean charToBoolean(char operandChar) {
 		return operandChar == '1';
 	}
 	
+	private static boolean stringToBoolean(String s) {
+		return s.charAt(0) == '1';
+	}
+	
+	public static int countEvalInefficient(String expr, boolean targetResult) {
+		if (expr.length() == 1) {
+			return stringToBoolean(expr) == targetResult ? 1 : 0;
+		}
+		
+		int totalWays = 0;
+		// Loop through operators
+		for (int i = 1; i < expr.length(); i += 2) {
+			char operator = expr.charAt(i); // assume this will be the last operator of the subexpression
+			String leftSubExpr = expr.substring(0, i);
+			String rightSubExpr = expr.substring(i + 1);
+			
+			if (operator == '&') {
+				int waysLeftTrue = countEvalInefficient(leftSubExpr, true);
+				int waysRightTrue = countEvalInefficient(rightSubExpr, true);
+				if (targetResult == true) {
+					totalWays += waysLeftTrue * waysRightTrue;
+				} else {
+					int waysLeftFalse = countEvalInefficient(leftSubExpr, false);
+					int waysRightFalse = countEvalInefficient(rightSubExpr, false);
+					int waysRightWhatever = waysRightTrue + waysRightFalse;
+					totalWays += (waysLeftFalse * waysRightWhatever) + (waysLeftTrue * waysRightFalse);
+				}
+			} else if (operator == '|') {
+				int waysLeftFalse = countEvalInefficient(leftSubExpr, false);
+				int waysRightFalse = countEvalInefficient(rightSubExpr, false);
+				if (targetResult == true) {
+					int waysLeftTrue = countEvalInefficient(leftSubExpr, true);
+					int waysRightTrue = countEvalInefficient(rightSubExpr, true);
+					int waysRightWhatever = waysRightTrue + waysRightFalse;
+					totalWays += (waysLeftTrue * waysRightWhatever) + (waysLeftFalse * waysRightTrue);
+				} else {
+					totalWays += waysLeftFalse * waysRightFalse;
+				}
+			} else {
+				int waysLeftTrue = countEvalInefficient(leftSubExpr, true);
+				int waysLeftFalse = countEvalInefficient(leftSubExpr, false);
+				int waysRightTrue = countEvalInefficient(rightSubExpr, true);
+				int waysRightFalse = countEvalInefficient(rightSubExpr, false);
+				if (targetResult == true) {
+					totalWays += (waysLeftTrue * waysRightFalse) + (waysLeftFalse * waysRightTrue);
+				} else {
+					totalWays += (waysLeftTrue * waysRightTrue) + (waysLeftFalse * waysRightFalse);
+				}
+				
+			}
+		}
+		
+		return totalWays;
+		
+	}
+	
 	public static void main(String[] args) {
-		System.out.println(countEval("0&0&0&1^1|0", true));
+		System.out.println(countEvalInefficient("0&0&0&1^1|0", true));
 	}
 }
