@@ -25,18 +25,22 @@ public class Tester {
 			int[] arrayA = originalArray.clone();
 			int[] arrayB = originalArray.clone();
 			int[] arrayC = originalArray.clone();
+			int[] arrayD = originalArray.clone();
 			//System.out.println(AssortedMethods.arrayToString(array));
 			QuestionA.sortValleyPeak(arrayA);
 			QuestionB.sortValleyPeak(arrayB);
 			QuestionC.sortValleyPeak(arrayC);
-			if (!confirmValleyPeak(arrayA) || !confirmValleyPeak(arrayB) || !confirmValleyPeak(arrayC)) {
+			Hector.sortValleyPeak(arrayD);
+			if (!confirmValleyPeak(arrayA) || !confirmValleyPeak(arrayB) || !confirmValleyPeak(arrayC) || !confirmValleyPeak(arrayD)) {
 				System.out.println(AssortedMethods.arrayToString(originalArray));
 				System.out.println(AssortedMethods.arrayToString(arrayA));
 				System.out.println(AssortedMethods.arrayToString(arrayB));
 				System.out.println(AssortedMethods.arrayToString(arrayC));
+				System.out.println(AssortedMethods.arrayToString(arrayD));
 				System.out.println(confirmValleyPeak(arrayA));
 				System.out.println(confirmValleyPeak(arrayB));
 				System.out.println(confirmValleyPeak(arrayC));
+				System.out.println(confirmValleyPeak(arrayD));
 				break;
 			}
 		}
